@@ -1,0 +1,5 @@
+export const DATABASE_CONNECTION = 'mongodb://localhost/shopDEV'
+export const SHOP_MODEL = 'shop'
+export const KEY_MODEL = 'key'
+export const APIKEY_MODEL = 'apikey'
+export const PRODUCT_MODEL = 'product'
