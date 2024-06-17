@@ -2,19 +2,19 @@ import { Connection, Document, Model, Schema, SchemaTypes } from 'mongoose'
 import { RoleShop } from 'src/enum/enum';
 
 interface Product extends Document {
-    readonly product_name: string;
-    readonly product_thumb: string;
-    readonly product_description: string;
-    readonly product_slug: string;
-    readonly product_price: number;
-    readonly product_quantity: number;
-    readonly product_type: string;
-    readonly product_shop: Schema.Types.ObjectId;
-    readonly product_attributes: Schema.Types.Mixed;
-    readonly product_ratingsAverage: number;
-    readonly product_variations: Array<Schema.Types.ObjectId>;
-    readonly isDraft: boolean;
-    readonly isPublished: boolean;
+    product_name: string;
+    product_thumb: string;
+    product_description: string;
+    product_slug: string;
+    product_price: number;
+    product_quantity: number;
+    product_type: string;
+    product_shop: Schema.Types.ObjectId;
+    product_attributes: Schema.Types.Mixed;
+    product_ratingsAverage: number;
+    product_variations: Array<Schema.Types.ObjectId>;
+    isDraft: boolean;
+    isPublished: boolean;
 }
 
 type ProductModel = Model<Product>

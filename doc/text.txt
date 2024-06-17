@@ -1,1 +1,6 @@
 * @Injectable() đánh dấu một class là một provider có thể được quản lý bởi hệ thống Dependency Injection của NestJS (Providers được đăng ký trong các module.)
+
+* file module
+- imports: danh sách các module khác mà module này phụ thuộc vào
+- controllers: danh sách các controller được định nghĩa trong module này
+- providers: danh sách các providers được định nghĩa trong module này (service, repositories)
