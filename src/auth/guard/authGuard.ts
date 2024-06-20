@@ -6,6 +6,7 @@ import { KeytokenService } from "src/module/keytoken/keytoken.service";
 import * as JWT from "jsonwebtoken";
 import { JwtPayload } from "./jwtPayload.interface";
 
+// kiểm tra token bằng middleware tự tạo
 @Injectable()
 export class AuthGuard implements CanActivate {
     constructor(

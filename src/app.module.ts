@@ -10,6 +10,7 @@ import { KeytokenModule } from './module/keytoken/keytoken.module';
 import mongodbConfig from './config/mongodb.config';
 import { ProductModule } from './module/product/product.module';
 import { CartModule } from './module/cart/cart.module';
+import { NotificationModule } from './module/notification/notification.module';
 
 @Module({
   imports: [
@@ -23,7 +24,8 @@ import { CartModule } from './module/cart/cart.module';
     AccessModule,
     KeytokenModule,
     ProductModule,
-    CartModule
+    CartModule,
+    NotificationModule
   ],
   controllers: [AppController],
   providers: [AppService],

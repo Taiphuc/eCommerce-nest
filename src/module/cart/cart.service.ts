@@ -4,17 +4,19 @@ import { Cart } from "src/database/models/cart.model";
 import { ProductService } from "../product/product.service";
 import { CART_MODEL } from "src/database/database.constants";
 import { Model } from "mongoose";
+import { ProductRepository } from "src/database/repositories/product.repo";
 
 @Injectable({ scope: Scope.REQUEST })
 export class CartService {
     constructor(
         @Inject(CART_MODEL) private cartModel: Model<Cart>,
-        private readonly productService: ProductService
+        private readonly productService: ProductService,
+        private readonly productRepository: ProductRepository
     ) { }
 
     async createUserCart({ user_id, product }: CreateUpdateCartDto): Promise<Cart> {
         const { product_id } = product
-        const foundProduct = await this.productService.getProductById(product_id)
+        const foundProduct = await this.productRepository.getProductById(product_id)
         if (!foundProduct) throw new Error('Product not exists')
 
         const query = { cart_user_id: user_id, cart_state: 'active' }
@@ -64,7 +66,7 @@ export class CartService {
     async addToCartV2({ user_id, shop_order_ids = {} }) {
         const { product_id, quantity, old_quantity } = shop_order_ids[0]?.item_products[0]
         // check product
-        const foundProduct = await this.productService.getProductById(product_id)
+        const foundProduct = await this.productRepository.getProductById(product_id)
         if (!foundProduct) throw new Error('Product not exists')
         // compare
         if (foundProduct.product_shop.toString() !== shop_order_ids[0]?.shop_id) throw new Error('Product do not belong to the shop')

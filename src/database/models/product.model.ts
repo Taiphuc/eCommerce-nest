@@ -1,5 +1,4 @@
 import { Connection, Document, Model, Schema, SchemaTypes } from 'mongoose'
-import { RoleShop } from 'src/enum/enum';
 
 interface Product extends Document {
     product_name: string;

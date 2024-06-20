@@ -13,33 +13,33 @@ export class AccessController {
     constructor(private accessService: AccessService) { }
 
     @Post("/login")
-    async login(@Body() body: LoginDto, @Res() res: Response): Promise<Response> {
+    async login(@Body() body: LoginDto) {
         const result = await this.accessService.login(body)
-        return res.json({
+        return {
             statusCode: HttpStatus.SUCCESS,
             message: HttpMessage.SUCCESS,
             data: result
-        })
+        }
     }
 
     @Post("/signup")
-    async signup(@Body() body: SignupDto, @Res() res: Response): Promise<Response> {
+    async signup(@Body() body: SignupDto) {
         const result = await this.accessService.signup(body)
-        return res.json({
+        return {
             statusCode: HttpStatus.SUCCESS,
             message: HttpMessage.SUCCESS,
             data: result
-        })
+        }
     }
 
     @Post("/logout")
     @UseGuards(AuthGuard)
-    async logout(@Req() req: Request, @Res() res: Response): Promise<Response> {
+    async logout(@Req() req: Request) {
         const result = await this.accessService.logout(req['keyStore'])
-        return res.json({
+        return {
             statusCode: HttpStatus.SUCCESS,
             message: HttpMessage.SUCCESS,
             data: result
-        })
+        }
     }
 }
