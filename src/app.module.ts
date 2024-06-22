@@ -11,6 +11,7 @@ import mongodbConfig from './config/mongodb.config';
 import { ProductModule } from './module/product/product.module';
 import { CartModule } from './module/cart/cart.module';
 import { NotificationModule } from './module/notification/notification.module';
+import { RbacModule } from './module/rbac/rbac.module';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { NotificationModule } from './module/notification/notification.module';
     KeytokenModule,
     ProductModule,
     CartModule,
-    NotificationModule
+    NotificationModule,
+    RbacModule
   ],
   controllers: [AppController],
   providers: [AppService],

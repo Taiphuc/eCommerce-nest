@@ -2,7 +2,7 @@ import { Connection } from 'mongoose';
 import {
     APIKEY_MODEL,
     CART_MODEL,
-    DATABASE_CONNECTION, KEY_MODEL, NOTIFICATION_MODEL, PRODUCT_MODEL, SHOP_MODEL, USER_MODEL,
+    DATABASE_CONNECTION, KEY_MODEL, NOTIFICATION_MODEL, PRODUCT_MODEL, RESOURCE_MODEL, ROLE_MODEL, SHOP_MODEL, USER_MODEL,
 } from './database.constants';
 import { createShopModel } from './models/shop.model';
 import { createKeyModel } from './models/keytoken.model';
@@ -11,6 +11,8 @@ import { createProductModel } from './models/product.model';
 import { createCartModel } from './models/cart.model';
 import { createNotificationModel } from './models/notification.model';
 import { createUserModel } from './models/user.model';
+import { createResourceModel } from './models/resource.model';
+import { createRoleModel } from './models/role.model';
 
 export const databaseModelsProviders = [
     {
@@ -46,6 +48,16 @@ export const databaseModelsProviders = [
     {
         provide: USER_MODEL,
         useFactory: (connection: Connection) => createUserModel(connection),
+        inject: [DATABASE_CONNECTION]
+    },
+    {
+        provide: RESOURCE_MODEL,
+        useFactory: (connection: Connection) => createResourceModel(connection),
+        inject: [DATABASE_CONNECTION]
+    },
+    {
+        provide: ROLE_MODEL,
+        useFactory: (connection: Connection) => createRoleModel(connection),
         inject: [DATABASE_CONNECTION]
     }
 ]

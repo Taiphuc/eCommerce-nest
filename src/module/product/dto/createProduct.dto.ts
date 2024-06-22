@@ -8,7 +8,6 @@ interface product_attributes {
 
 export class CreateProductDto {
 
-
     readonly product_name: string;
 
     readonly product_description: string;
